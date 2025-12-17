@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Button Calculator</title>
+<style>
+        input {
+            width: 160px;
+            height: 30px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin: 2px;
+        }
+</style>
+</head>
+<body>
+<h2>Calculator with Buttons</h2>
+<!-- Display input -->
+<input type="text" id="display" readonly><br>
+<!-- Number buttons -->
+<button onclick="appendDigit('7')">7</button>
+<button onclick="appendDigit('8')">8</button>
+<button onclick="appendDigit('9')">9</button>
+<button onclick="appendOperator('+')">+</button><br>
+<button onclick="appendDigit('4')">4</button>
+<button onclick="appendDigit('5')">5</button>
+<button onclick="appendDigit('6')">6</button>
+<button onclick="appendOperator('-')">-</button><br>
+<button onclick="appendDigit('1')">1</button>
+<button onclick="appendDigit('2')">2</button>
+<button onclick="appendDigit('3')">3</button>
+<button onclick="appendOperator('*')">*</button><br>
+<button onclick="appendDigit('0')">0</button>
+<button onclick="appendDot()">.</button>
+<button onclick="calculateResult()">=</button>
+<button onclick="appendOperator('/')">/</button><br>
+<!-- Clear and Delete -->
+<button onclick="clearDisplay()">C</button>
+<button onclick="deleteLast()">Del</button>
+<script>
+        const display = document.getElementById('display');
+        function appendDigit(digit) {
+            display.value += digit;
+        }
+        function appendOperator(op) {
+            display.value += op;
+        }
+        function appendDot() {
+            display.value += '.';
+        }
+        function calculateResult() {
+            // Use eval to calculate the expression
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+        function clearDisplay() {
+            display.value = '';
+        }
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+</script>
+</body>
+</html>

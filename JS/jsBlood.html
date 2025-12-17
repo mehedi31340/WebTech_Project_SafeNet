@@ -1,0 +1,33 @@
+<html>
+<head><title>Blood Group</title></head>
+<body>
+  <b>Blood Group</b>
+  <select id="bg">
+    <option value="">Select</option>
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>O+</option>
+    <option>O-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+  </select><br>
+  <p id="error"></p>
+  <input type="button" value="Submit" onclick="check()">
+
+  <script>
+    function check() {
+      let bg = document.getElementById("bg").value;
+      let err = document.getElementById("error");
+      err.style.color = "red";
+      if (bg == "") {
+        err.innerHTML = "Must be selected";
+      } else {
+        err.innerHTML = "";
+        alert("Blood Group: " + bg);
+      }
+    }
+  </script>
+</body>
+</html>

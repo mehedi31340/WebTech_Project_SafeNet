@@ -1,0 +1,57 @@
+<html>
+<head><title>Email</title></head>
+<body>
+  <b>Email</b><br>
+  <input type="text" id="email" value="" placeholder="mehedi@example.com"><br>
+  <p id="error"></p>
+  <input type="button" value="Submit" onclick="check()">
+
+  <script>
+    function check() {
+      let email = document.getElementById("email").value;
+      let err = document.getElementById("error");
+      err.innerHTML = "";
+      err.style.color = "red";
+
+      if (email == "") {
+        err.innerHTML = "Cannot be empty";
+        return;
+      }
+
+      let atCount = 0, atPos = -1;
+      for (let i = 0; i < email.length; i++) {
+        if (email[i] == '@') {
+          atCount++;
+          atPos = i;
+        }
+      }
+      if (atCount != 1) {
+        err.innerHTML = "Must be a valid email address (mehedi@aiub.com)";
+        return;
+      }
+
+      let left = "", right = "";
+      for (let i = 0; i < atPos; i++) left += email[i];
+      for (let i = atPos + 1; i < email.length; i++) right += email[i];
+      if (left == "" || right == "") {
+        err.innerHTML = "Must be a valid email address (mehedi@aiub.com) ";
+        return;
+      }
+
+      let dotPos = -1;
+      for (let i = 0; i < right.length; i++) {
+        if (right[i] == '.') {
+          dotPos = i;
+          break;
+        }
+      }
+      if (dotPos <= 0 || dotPos == right.length - 1) {
+        err.innerHTML = "Must be a valid email address (mehedi@aiub.com)";
+        return;
+      }
+
+      alert("Valid Email!");
+    }
+  </script>
+</body>
+</html>

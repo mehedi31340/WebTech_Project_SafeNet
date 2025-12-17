@@ -1,0 +1,42 @@
+<html>
+<head><title>Profile Picture</title></head>
+<body>
+  <b>Profile Picture</b><br>
+  User Id <input type="text" id="uid" value=""><br>
+  Picture <input type="file" id="pic"><br>
+  <p id="error"></p>
+  <input type="button" value="Submit" onclick="check()">
+
+  <script>
+    function check() {
+      let uid = document.getElementById("uid").value;
+      let file = document.getElementById("pic").files[0];
+      let err = document.getElementById("error");
+      err.innerHTML = "";
+      err.style.color = "red";
+
+      if (uid == "") {
+        err.innerHTML = "UserId cannot be empty";
+        return;
+      }
+      let num = 0;
+      let temp = "";
+      for (let i = 0; i < uid.length; i++) {
+        if (uid[i] >= '0' && uid[i] <= '9') temp += uid[i];
+      }
+      num = parseInt(temp);
+      if (isNaN(num) || num <= 0) {
+        err.innerHTML = "has to be a positive number";
+        return;
+      }
+
+      if (!file) {
+        err.innerHTML = "Picture cannot be empty";
+        return;
+      }
+
+      alert("Valid Profile!");
+    }
+  </script>
+</body>
+</html>
